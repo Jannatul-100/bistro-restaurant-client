@@ -10,7 +10,9 @@ import useMenu from '../../hooks/useMenu';
 import SectionTitle from '../../components/SectionTitle';
 import MenuCategory from './MenuCategory';
 
+
 const Menu = () => {
+
 
     const [menu] = useMenu();
     const offered = menu.filter(item => item.category === 'offered');
