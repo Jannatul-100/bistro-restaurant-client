@@ -3,11 +3,16 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, val
 import { AuthContext } from '../../providers/AuthProviders';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { FaArrowRight, FaEye, FaEyeSlash, FaHome } from "react-icons/fa";
+import SocialLogin from '../../components/SocialLogin';
+import bgImage from '../../assets/others/authentication.png'
+import authImg from '../../assets/others/authentication2.png'
 
 
 const Login = () => {
 
-    const {signIn} = useContext(AuthContext);
+    const [showPassword, setShowPassword] = useState(false);
+    const {signIn,  resetPassword} = useContext(AuthContext);
     const [disabled, setDisabled] = useState(true);
 
     const navigate = useNavigate();
@@ -66,36 +71,88 @@ const Login = () => {
         }
     }
 
+    const handleForgotPassword = () => {
+        const email = document.querySelector('input[name="email"]').value;
+
+        if(!email){
+            Swal.fire({
+                icon: "warning",
+                title: "Please enter your email first."
+            });
+            return;
+        }
+
+        resetPassword(email)
+        .then(() => {
+            Swal.fire({
+                icon: "success",
+                title: "Password reset email sent!"
+            });
+        })
+        .catch(error => {
+            console.log(error);
+            Swal.fire({
+                icon: "error",
+                title: "Failed to send reset email"
+            });
+        });
+    }
+
+
     return (
-    <div className="hero bg-base-200 min-h-screen">
-        <div className="hero-content flex-col lg:flex-row">
-            <div className="text-center w-full md:w-1/2  lg:text-left">
-                <h1 className="text-5xl font-bold">Login now!</h1>
-                <p className="py-6">
-                    Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                    quasi. In deleniti eaque aut repudiandae et a id nisi.
-                </p>
+    <div className="hero bg-base-200 min-h-screen py-8"
+      style={{
+            backgroundImage: `url(${bgImage})`
+        }}>
+
+            <Link to="/" className="flex items-center gap-1 hover:text-blue-700 text-sm md:text-md font-bold
+            absolute top-4 right-6 md:top-8 md:right-10 lg:top-12 lg:right-40 z-50 btn btn-sm md:btn-md rounded-full">
+               <FaHome /> Home 
+            </Link>
+
+        <div className="hero-content flex-col lg:flex-row ">
+            <div className="text-center w-full lg:w-1/2  lg:text-left">
+                <h1 className="text-4xl md:text-5xl text-center font-bold text-blue-600">Login now!</h1>
+                 <img src={authImg} className="py-4 md:py-6  px-6 md:px-0" />
             </div>
-            <div className="card bg-base-100 w-full md:w-1/2 max-w-sm  shadow-2xl">
-                <form onSubmit={handleLogin} className="card-body">
+            <div className="card bg-base-100 w-full lg:w-1/2 max-w-sm shadow-2xl">
+                <form onSubmit={handleLogin} className="card-body rounded-lg"
+                      style={{
+                    backgroundImage: `url(${bgImage})`
+                }}>
                     <fieldset className="fieldset">
 
-                    <label className="label">Email</label>
-                    <input type="email" name="email" className="input" placeholder="Email" required />
+                        <label className="label">Email</label>
+                        <input type="email" name="email" className="input w-full" placeholder="Email" required />
 
-                    <label className="label">Password</label>
-                    <input type="password" name="password" className="input my-1" placeholder="Password" required />
+                        <label className="label">Password</label>
+                        <div className="relative mb-2">
+                        <input type={showPassword ? "text" : "password"} name="password" className="input w-full" placeholder="Password" required />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(prev => !prev)}
+                                className="absolute inset-y-0 right-2 flex items-center z-10 text-gray-500 hover:text-black text-sm"
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </button>
+                        </div>
 
-                    <label className="label"> <LoadCanvasTemplate /> </label>
-                    <input onBlur={handleValidateCaptcha} type="text"  name="captcha" className="input mb-1" placeholder="Type the text above" required />
-                    {/* <button  className='btn btn-outline btn-xs w-1/4 hover:bg-black hover:text-white mt-2'>Validate</button> */}
+                        <label className="label "> <LoadCanvasTemplate /> </label>
+                        <input onBlur={handleValidateCaptcha} type="text"  name="captcha" className="input mb-1 w-full" placeholder="Type the text above" required />
+                        {/* <button  className='btn btn-outline btn-xs w-1/4 hover:bg-black hover:text-white mt-2'>Validate</button> */}
 
-                    <div><a className="link link-hover hover:text-blue-700">Forgot password?</a></div>
-                    
-                    <input  disabled={disabled}  className="btn btn-primary mt-4" type="submit" value="Login" />
+                        <div><a onClick={handleForgotPassword} className="link link-hover hover:text-blue-700">Forgot password?</a></div>
+                        
+                        <input  disabled={disabled}  className="btn btn-primary mt-2" type="submit" value="Login" />
                     </fieldset>
 
-                    <p className='text-center text-[#D1A054] font-semibold'><small>New here? <Link to="/signup" className='hover:font-bold hover:underline'>Create a New Account.</Link> </small></p>
+                    <p className='text-center text-[#D1A054] font-semibold pt-1'>New here? <Link to="/signup" className='hover:font-bold hover:underline'>Create a New Account.</Link> </p>
+                    
+                    <div className="divider">OR</div>
+                    {/* Google */}
+                    <SocialLogin></SocialLogin>
+
+
                 </form>
 
             </div>

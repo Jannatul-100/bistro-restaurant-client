@@ -35,7 +35,7 @@ const OrderShop = () => {
                     <TabList>
                         <Tab>Salad</Tab>
                         <Tab>Pizza</Tab>
-                        <Tab>Soups</Tab>
+                        <Tab>Soup</Tab>
                         <Tab>Desserts</Tab>
                         <Tab>Drinks</Tab>
                     </TabList>
