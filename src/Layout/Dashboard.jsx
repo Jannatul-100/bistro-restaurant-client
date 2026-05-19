@@ -87,7 +87,8 @@ const Dashboard = () => {
                     </>
                     :
                     <>
-                                        {/* userHome */}
+                    {/* user things */}
+                        {/* userHome */}
                         <li>
                             <NavLink to="/dashboard/userHome" className={({ isActive }) => 
                                 isActive 
@@ -113,6 +114,13 @@ const Dashboard = () => {
                                 ? " text-white " 
                                 : ""
                             }> <FaShoppingCart></FaShoppingCart> My Cart </NavLink>
+                        </li>
+
+                         {/* Payment History */}
+                        <li>
+                            <NavLink to="/dashboard/paymentHistory">
+                            <FaList></FaList>
+                            Payment History</NavLink>
                         </li>
 
                         {/* review */}

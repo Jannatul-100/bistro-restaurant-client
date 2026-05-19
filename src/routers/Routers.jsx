@@ -16,6 +16,9 @@ import AddItems from "../pages/Dashboard/AddItems/AddItems";
 import AdminRoute from "./AdminRoute";
 import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
 import UpdateItems from "../pages/Dashboard/UpdateItems/UpdateItems";
+import Payment from "../pages/Dashboard/Payment/Payment";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
+
 
 
 
@@ -68,6 +71,16 @@ export const router = createBrowserRouter([
         path: 'cart',
         element:<Cart></Cart>,
         handle: { title: "Bistro Boss | Cart" }
+      },
+      {
+        path: 'payment',
+        element:<Payment></Payment>,
+        handle: { title: "Bistro Boss | Payment" }
+      },
+      {
+          path: 'paymentHistory',
+          element: <PaymentHistory></PaymentHistory>,
+          handle: { title: "Bistro Boss | Payment History" }
       },
 
 
