@@ -3,6 +3,7 @@ import useAuth from "../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 // import axios from "axios";
 
 
@@ -14,6 +15,7 @@ const FoodCard = ({item}) => {
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
+    const [isAdmin] = useAdmin();
 
     const handleAddToCart = () =>{
         
@@ -74,9 +76,18 @@ const FoodCard = ({item}) => {
                 <div className="card-body text-center bg-base-300">
                     <h2 className="font-bold text-lg">{name}</h2>
                     <p className="text-sm text-gray-600">{recipe}</p>
+                    
+                    {isAdmin ? 
+                    <>
+                    <button 
+                    className="btn btn-outline border-0 border-b-4 mx-auto bg-gray-300 text-yellow-600 hover:bg-gray-800  hover:text-yellow-600 hover:border-b-0  mt-3">ADD TO CART</button>
+                    </> 
+                    :
+                    <>
                     <button 
                     onClick={handleAddToCart}
                     className="btn btn-outline border-0 border-b-4 mx-auto bg-gray-300 text-yellow-600 hover:bg-gray-800  hover:text-yellow-600 hover:border-b-0  mt-3">ADD TO CART</button>
+                    </> }
 
                 </div>
             </div>

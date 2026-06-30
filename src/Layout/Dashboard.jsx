@@ -5,7 +5,8 @@ import { ImSpoonKnife } from "react-icons/im";
 import { MdEmail, MdReviews } from "react-icons/md";
 import { Link, NavLink, Outlet, useMatches } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
-
+import useAuth from "../hooks/useAuth";
+import { FaUserCircle, FaSignOutAlt } from "react-icons/fa";
 
 
 const Dashboard = () => {
@@ -23,6 +24,15 @@ const Dashboard = () => {
 
     const [isAdmin] = useAdmin();
 
+    const { user, logout } = useAuth();
+
+    const handleLogout = () => {
+        logout()
+            .then(() => {})
+            .catch(console.error);
+    };
+
+
     return (
         <div className="flex">
             {/* side bar */}
@@ -34,6 +44,46 @@ const Dashboard = () => {
                     </Link>
                 </div>
 
+                <div className="p-2 md:p-4 lg:p-6">
+                    <div className="flex items-center gap-3">
+
+                        {/* Profile Image */}
+                        {
+                            user?.photoURL ? (
+                                <img
+                                    src={user.photoURL}
+                                    alt="Profile"
+                                    className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-white"
+                                />
+                            ) : (
+                                <FaUserCircle className="w-10 h-10 md:w-12 md:h-12 text-white" />
+                            )
+                        }
+
+                        {/* Name & Email */}
+                        <div>
+                            <h2 className="font-bold text-sm md:text-base">
+                                {user?.displayName || "User"}
+
+                                <span
+                                    className={`text-[10px] md:text-xs px-2 py-0.5 mx-1 rounded-full text-white ${
+                                        isAdmin ? "bg-red-500" : "bg-blue-500"
+                                    }`}
+                                >
+                                    {isAdmin ? "Admin" : "User"}
+                                </span>
+                            </h2>
+
+                            <p className="text-xs opacity-70 break-all">
+                                {user?.email}
+                            </p>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div className="divider "></div>
+
                 <ul className="menu p-2 md:p-4 lg:p-6 sentence md:uppercase">
                     
                 {
@@ -43,8 +93,8 @@ const Dashboard = () => {
                     <li>
                         <NavLink to="/dashboard/adminHome" className={({ isActive }) => 
                             isActive 
-                            ? "bg-black text-white rounded-lg" 
-                            : ""
+                            ? " text-white " 
+                                : ""
                         }> 
                         <FaHome></FaHome> Admin Home</NavLink>
                     </li>
@@ -92,20 +142,12 @@ const Dashboard = () => {
                         <li>
                             <NavLink to="/dashboard/userHome" className={({ isActive }) => 
                                 isActive 
-                                ? "bg-black text-white rounded-lg" 
+                                ? " text-white " 
                                 : ""
                             }> 
                             <FaHome></FaHome> User Home</NavLink>
                         </li>
 
-                        {/* reservation */}
-                        <li>
-                            <NavLink to="/dashboard/reservation" className={({ isActive }) => 
-                                isActive 
-                                ? " text-white " 
-                                : ""
-                            }><FaCalendar></FaCalendar> Reservation </NavLink>
-                        </li>
 
                             {/* cart */}
                         <li>
@@ -118,9 +160,31 @@ const Dashboard = () => {
 
                          {/* Payment History */}
                         <li>
-                            <NavLink to="/dashboard/paymentHistory">
+                            <NavLink to="/dashboard/paymentHistory" className={({ isActive }) => 
+                                isActive 
+                                ? " text-white " 
+                                : ""
+                            }>
                             <FaList></FaList>
                             Payment History</NavLink>
+                        </li>
+
+                        {/* reservation */}
+                        <li>
+                            <NavLink to="/dashboard/reservations" className={({ isActive }) => 
+                                isActive 
+                                ? " text-white " 
+                                : ""
+                            }><FaCalendar></FaCalendar> Reservation </NavLink>
+                        </li>
+
+                        {/* bookings */}
+                        <li>
+                            <NavLink to="/dashboard/bookings"  className={({ isActive }) => 
+                                isActive 
+                                ? " text-white " 
+                                : ""
+                            }><FaList></FaList> My Bookings </NavLink>
                         </li>
 
                         {/* review */}
@@ -132,14 +196,7 @@ const Dashboard = () => {
                             }><MdReviews /> Add Review </NavLink>
                         </li>
                         
-                        {/* bookings */}
-                        <li>
-                            <NavLink to="/dashboard/bookings"  className={({ isActive }) => 
-                                isActive 
-                                ? " text-white " 
-                                : ""
-                            }><FaList></FaList> My Bookings </NavLink>
-                        </li>
+
                     </>
                 }
 
@@ -174,7 +231,18 @@ const Dashboard = () => {
                             : ""
                         }><MdEmail /> Contact</NavLink>
                     </li>
+
+                    <div className="divider"></div>
+
+                    <li>
+                        <button onClick={handleLogout} className="sentence md:uppercase">
+                            <FaSignOutAlt />
+                            Logout
+                        </button>
+                    </li>
+
                 </ul>
+                
             </div>
 
             {/* dashboard content */}

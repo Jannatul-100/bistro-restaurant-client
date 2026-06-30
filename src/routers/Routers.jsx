@@ -18,6 +18,13 @@ import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
 import UpdateItems from "../pages/Dashboard/UpdateItems/UpdateItems";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
+import ErrorPage from "../ErrorPage/ErrorPage";
+import UserHome from "../pages/Dashboard/User/UserHome/UserHome";
+import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
+import AddReview from "../pages/Dashboard/User/AddReview/AddReview";
+import Reservation from "../pages/Dashboard/User/Reservation/Reservation";
+import Bookings from "../pages/Dashboard/User/Bookings/Bookings";
+import ManageBookings from "../pages/Dashboard/Admin/ManageBookings/ManageBookings";
 
 
 
@@ -27,11 +34,12 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
         {
             path: '/',
             element: <Home></Home>,
-            handle: { title: "Bistro Boss Restaurant | Home" }            
+            handle: { title: "Bistro Boss | Home" }            
         },
         {
             path: 'menu',
@@ -65,8 +73,14 @@ export const router = createBrowserRouter([
     path: 'dashboard',
     element: <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute> ,
     handle: { title: "Bistro Boss | Dashboard" },
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       // normal user routes
+      {
+        path: 'userHome',
+        element:<UserHome></UserHome>,
+        handle: { title: "Bistro Boss | User Home" }
+      },
       {
         path: 'cart',
         element:<Cart></Cart>,
@@ -82,9 +96,29 @@ export const router = createBrowserRouter([
           element: <PaymentHistory></PaymentHistory>,
           handle: { title: "Bistro Boss | Payment History" }
       },
+      {
+          path: 'review',
+          element: <AddReview></AddReview>,
+          handle: { title: "Bistro Boss | Add Review" }
+      },
+      {
+          path: 'reservations',
+          element: <Reservation></Reservation>,
+          handle: { title: "Bistro Boss | Reservation" }
+      },
+      {
+          path: 'bookings',
+          element: <Bookings></Bookings>,
+          handle: { title: "Bistro Boss | Bookings" }
+      },
 
 
       //admin routes
+      {
+        path: 'adminHome',
+        element:<AdminRoute> <AdminHome></AdminHome> </AdminRoute>,
+        handle: { title: "Bistro Boss | Admin Home" }
+      },
       {
         path: 'addItems',
         element:  <AdminRoute> <AddItems></AddItems> </AdminRoute>,
@@ -94,6 +128,11 @@ export const router = createBrowserRouter([
         path: 'manageItems',
         element:  <AdminRoute> <ManageItems></ManageItems> </AdminRoute>,
         handle: { title: "Bistro Boss | Manage Items" }
+      },
+      {
+        path: 'manageBookings',
+        element:  <AdminRoute> <ManageBookings></ManageBookings> </AdminRoute>,
+        handle: { title: "Bistro Boss | Manage Bookings" }
       },
       {
         path: 'updateItems/:id',

@@ -4,13 +4,20 @@ import SectionTitle from "../../../components/SectionTitle";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import useMenu from "../../../hooks/useMenu";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 
 const ManageItems = () => {
 
-    const [menu, refetch] = useMenu();
     const axiosSecure = useAxiosSecure();
-    
+    const [selectedCategory, setSelectedCategory] = useState("all");
+    const [menu, refetch] = useMenu();
+     
+    const filteredMenu =
+    selectedCategory === "all"
+        ? menu
+        : menu.filter(item => item.category === selectedCategory);
+
 
     const handleDeleteItem = (item) =>{
         Swal.fire({
@@ -47,9 +54,26 @@ const ManageItems = () => {
             >
         </SectionTitle>
 
-      <div className=" font-bold">
-        <h2 className="text-xl md:text-2xl lg:text-3xl mb-6 md:mb-8">Total Items: {menu.length}</h2>
-      </div>
+        <div className="flex justify-between items-center mb-5 ">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold">
+                Total Items: {filteredMenu.length}
+            </h2>
+
+            <select
+                className="select select-bordered w-1/2"
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+            >
+                <option value="all">All Categories</option>
+                <option value="salad">Salad</option>
+                <option value="pizza">Pizza</option>
+                <option value="soup">Soup</option>
+                <option value="dessert">Dessert</option>
+                <option value="drinks">Drinks</option>
+                <option value="offered">Offered</option>
+            </select>
+        </div>
+
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -67,7 +91,7 @@ const ManageItems = () => {
           </thead>
           <tbody>
             {
-                menu.map((item, index) => <tr key={item._id}>
+                filteredMenu.map((item, index) => <tr key={item._id}>
                 <th>
                     {index + 1}
                 </th>

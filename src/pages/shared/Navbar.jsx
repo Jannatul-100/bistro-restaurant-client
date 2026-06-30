@@ -1,16 +1,18 @@
 
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import { FaUserCircle } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from '../../hooks/useCart';
+import useAdmin from '../../hooks/useAdmin';
 
 
 const Navbar = () => {
 
     const {user, logout} = useContext(AuthContext);
     const [cart] = useCart();
+    const [isAdmin] = useAdmin();
 
     const handleLogout = () =>{
         logout()
@@ -24,17 +26,25 @@ const Navbar = () => {
     <>
         <li><Link to="/">HOME</Link></li>
         <li><Link to="contact">CONTACT US</Link></li>
-        <li><Link to="/dashboard">DASHBOARD</Link></li>
+
+        {user && (
+            <li><NavLink to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"} 
+            className={({ isActive }) => isActive ? " text-white " : ""}>DASHBOARD</NavLink></li>
+        )}
+
         <li><Link to="/menu">OUR MENU</Link></li>
         <li><Link to="/order/salad" >OUR SHOP</Link></li>
-        <li>
-            <Link to="/dashboard/cart" className="flex ">
-                <span className='btn-sm rounded-full bg-gray-400 px-2 py-1 lg:py-2 flex items-center gap-1 '>
-                    <FaShoppingCart className='w-4 h-4'/> 
-                    <div className="badge badge-sm badge-secondary">+{cart.length}</div>
-                </span>
-            </Link>
-        </li>
+        
+        {!isAdmin && ( 
+            <li>
+                <Link to="/dashboard/cart" className="flex ">
+                    <span className='btn-sm rounded-full bg-gray-400 px-2 py-1 lg:py-2 flex items-center gap-1 '>
+                        <FaShoppingCart className='w-4 h-4'/> 
+                        <div className="badge badge-sm badge-secondary">+{cart.length}</div>
+                    </span>
+                </Link>
+            </li>
+        )}
         
 
     </>
@@ -72,7 +82,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div>
-                    <Link to="/" className="btn-xs btn-ghost text-lg md:text-2xl ml-0 md:ml-2 lg:ml-4 ">Bistro Boss Restaurant</Link>
+                    <Link to="/" className="btn-xs btn-ghost text-lg md:text-2xl ml-0 md:ml-2 lg:ml-4 font-semibold ">Bistro Boss Restaurant</Link>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex ">

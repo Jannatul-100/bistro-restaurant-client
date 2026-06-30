@@ -109,7 +109,7 @@ const Contact = () => {
 
           <div className="bg-[#F3F3F3] text-center py-10 px-4 m-4">
             <h2 className="text-xl font-semibold mb-2">WORKING HOURS</h2>
-            <p>Mon - Fri: 9:00 AM - 10:00 PM</p>
+            <p>Mon - Fri: 10:00 AM - 10:00 PM</p>
             <p>Sat - Sun: 10:00 AM - 11:00 PM</p>
           </div>
         </div>

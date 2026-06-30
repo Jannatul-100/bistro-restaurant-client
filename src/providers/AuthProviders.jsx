@@ -1,13 +1,13 @@
 import { createContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
-import { app } from "../firebase/firebase.config";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { auth } from "../firebase/firebase.config";
 import { IoConstructSharp } from "react-icons/io5";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 export const AuthContext = createContext(null);
 
-const auth = getAuth(app);
+// const auth = getAuth(app);
 
 const AuthProviders = ({children}) => {
 
@@ -58,14 +58,16 @@ const AuthProviders = ({children}) => {
                 .then(res =>{
                     if(res.data.token){
                         localStorage.setItem('access-token', res.data.token);
+                        setLoading(false);
                     }
                 })
             }
             else{
                 //remove token , if token stored in the client side: localStorage, caching, in memory
                 localStorage.removeItem('access-token');
+                setLoading(false);
             }
-            setLoading(false);
+            
         });
 
         return unsubscribe;

@@ -7,7 +7,7 @@ import useAuth from "../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 const CheckoutForm = () => {
 
- const [error, setError] = useState('');
+    const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState('')
     const [transactionId, setTransactionId] = useState('');
     const stripe = useStripe();
@@ -95,7 +95,7 @@ const CheckoutForm = () => {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: "Thank you for the taka paisa",
+                        title: "Thank you for the payment.",
                         showConfirmButton: false,
                         timer: 1500
                     });

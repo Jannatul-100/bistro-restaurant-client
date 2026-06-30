@@ -57,7 +57,43 @@ const Login = () => {
 
             navigate(from, {replace: true});
         })
+
+         .catch((error) => {
+            let message = "";
+
+            switch (error.code) {
+            case "auth/invalid-credential":
+                message = "Invalid email or password.";
+                break;
+
+            case "auth/user-not-found":
+                message = "No account found with this email.";
+                break;
+
+            case "auth/wrong-password":
+                message = "Incorrect password.";
+                break;
+
+            case "auth/invalid-email":
+                message = "Please enter a valid email address.";
+                break;
+
+            case "auth/too-many-requests":
+                message = "Too many failed attempts. Please try again later.";
+                break;
+
+            default:
+                message = "Login failed. Please try again.";
+            }
+
+            Swal.fire({
+            icon: "error",
+            title: "Login Failed",
+            text: message,
+            });
+        });
     }
+
 
     const handleValidateCaptcha = (e) =>{
         const user_captcha_value = e.target.value;

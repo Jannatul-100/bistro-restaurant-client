@@ -30,19 +30,40 @@ const PaymentHistory = () => {
                     <thead className="bg-orange-300 ">
                         <tr>
                             <th>#</th>
-                            <th>price</th>
+                            <th>Items</th>
+                            <th>Total Price</th>
                             <th>Transaction Id</th>
                             <th>Status</th>
+                            <th>Date</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         {payments.map((payment, index) => <tr key={payment._id}>
                             <th>{index + 1}</th>
+                            <td>{payment.menuItemIds.length}
+                                {/* {payment.items?.map((item, index) => (
+                                    <div key={index} className="text-xs text-gray-500">
+                                    {item.name} × {item.quantity}
+                                    </div>
+                                ))} */}
+                            </td>
+                            
                             <td>${payment.price}</td>
                             <td>{payment.transactionId}</td>
-                            <td>{payment.status}</td>
-                        </tr>)}
-                        
+                            <td>
+                                <span className={`badge ${
+                                    payment.status === "Paid"
+                                    ? "badge-success"
+                                    : payment.status === "Pending"
+                                    ? "badge-warning"
+                                    : "badge-error"
+                                }`}>
+                                    {payment.status || "Paid"}
+                                </span>
+                            </td>
+                        <td>{payment.date}</td>
+                        </tr>)}   
                     </tbody>
                 </table>
             </div>
