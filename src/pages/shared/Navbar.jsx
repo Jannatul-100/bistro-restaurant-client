@@ -63,7 +63,7 @@ const Navbar = () => {
                     </div>
                 </div> 
                 : 
-                <Link to="/login" className="btn btn-sm md:btn-md bg-pink-500 text-white border-0 rounded-full">LOGIN</Link>
+                <Link to="/login" className="btn btn-sm md:btn-md bg-gray-400 text-white border-0 rounded-full">LOGIN</Link>
             }
        
     </>
