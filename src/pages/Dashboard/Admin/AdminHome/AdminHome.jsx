@@ -31,7 +31,7 @@ const AdminHome = () => {
     })
 
     //order-stats
-    const { data: charts = [] } = useQuery({
+    const { data: charts = [], orderLoading } = useQuery({
         queryKey: ['order-stats'],
         queryFn: async() =>{
             const res = await axiosSecure.get('/order-stats');
@@ -39,7 +39,7 @@ const AdminHome = () => {
         }
     })
 
-    if(isLoading){
+    if(isLoading || orderLoading){
         return <progress className='progress w-56 md:w-76'></progress>
     }
 
@@ -118,13 +118,14 @@ const AdminHome = () => {
 
     return (
         <div>
-            <h2 className='text-xl md:text-3xl mt-6 font-bold'>
+            <h2 className='text-xl md:text-3xl mt-8 font-bold text-[#D1A054]'>
                 <span>Hi, Welcome </span>
                 {
                     user?.displayName ? user.displayName : 'Back'
                 }!
             </h2>
 
+            <div className='grid grid-cols-1 '>   
             <div className="stats shadow my-6">
                 <div className="stat">
                     <div className="stat-figure text-secondary">
@@ -132,7 +133,7 @@ const AdminHome = () => {
                     </div>
                     <div className="stat-title font-bold">Revenue</div>
                     <div className="stat-value">${stats?.revenue}</div>
-                    <div className="stat-desc">Jan 1st - June 1st</div>
+                    <div className="stat-desc">Jan 1st - Now</div>
                 </div>
 
                 <div className="stat">
@@ -161,6 +162,7 @@ const AdminHome = () => {
                     <div className="stat-value">{stats.orders}</div>
                     <div className="stat-desc">↘︎ 14% </div>
                 </div>
+            </div>
             </div>
 
             {/* stats */}

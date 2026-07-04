@@ -36,7 +36,7 @@ const Footer = () => {
 
       {/* BOTTOM SECTION */}
       <div className="bg-[#0A0A0A] py-4 text-center text-sm">
-        Copyright © {new Date().getFullYear()} CulinaryCloud. All rights reserved.
+        Copyright © {new Date().getFullYear()} Bistro Restaurant. All rights reserved.
       </div>
 
     </footer>

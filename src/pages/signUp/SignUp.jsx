@@ -8,6 +8,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SocialLogin from "../../components/SocialLogin";
 import bgImage from '../../assets/others/authentication.png';
 import authGif from '../../assets/others/authentication.gif';
+import logo from '../../assets/Main-Logo.png';
 
 
 const SignUp = () => {
@@ -68,14 +69,17 @@ const SignUp = () => {
         backgroundImage: `url(${bgImage})`
         }}>
 
-        <Link to="/" className="flex items-center gap-1 hover:text-blue-700 text-sm md:text-md font-bold
+        <Link to="/" className="absolute top-4 left-6 md:top-8 md:left-10 lg:top-12 lg:left-40 z-50">
+               <img src={logo} alt='logo' className="w-16 h-16 md:w-20 md:h-20"></img>
+        </Link>
+        <Link to="/" className="flex items-center gap-1 hover:text-[#D1A054] text-sm md:text-md font-bold
             absolute top-4 right-6 md:top-8 md:right-10 lg:top-12 lg:right-40 z-50 btn btn-sm md:btn-md rounded-full">
                <FaHome /> Home 
         </Link>
 
-        <div className="hero-content flex-col lg:flex-row-reverse">
+        <div className="hero-content flex-col lg:flex-row-reverse mt-6">
             <div className="text-center items-center w-full lg:w-1/2 lg:text-left pl-0 lg:pl-8">
-                <h1 className="text-4xl md:text-5xl text-center font-bold text-blue-600">SignUp now!</h1>
+                <h1 className="text-4xl md:text-5xl text-center font-bold text-[#D1A054]">SignUp now!</h1>
                 <img src={authGif} className=" py-4 md:py-6 lg:py-8 rounded-full px-6 md:px-40 lg:px-0" />
             </div>
             <div className="card bg-base-100 w-full lg::w-1/2 max-w-sm  shadow-2xl">
@@ -105,12 +109,12 @@ const SignUp = () => {
                             {errors.password?.type === 'pattern' && <span className="text-red-500">Password must include uppercase, lowercase, number & special character.</span>}
                               <button type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute inset-y-0 right-2 flex items-center text-sm z-10 text-gray-500 hover:text-black"
+                                className="absolute inset-y-0 right-3 flex items-center text-sm z-10 text-gray-500 hover:text-black"
                             >
                                 {showPassword ? <FaEyeSlash /> : <FaEye />}
                             </button>
                         </div>
-                        <input  className="btn btn-primary mt-4" type="submit" value="Sign Up" />
+                        <input  className="btn bg-[#C28B3C] text-white mt-4" type="submit" value="Sign Up" />
                     </fieldset>
 
                     <p className="text-center text-[#D1A054] font-semibold pt-1"> Already registered? <Link to="/login" className="hover:font-bold hover:underline">Go to login.</Link> </p>

@@ -134,11 +134,12 @@ const UserHome = () => {
 
   return (
     <div>
-      <h2 className="text-xl md:text-3xl mt-6 font-bold">
+      <h2 className="text-xl md:text-3xl mt-8 font-bold text-[#D1A054]">
         <span>Hi, Welcome </span>
         {user?.displayName ? user.displayName : "Back"}!
       </h2>
 
+      <div className='grid grid-cols-1 '>   
       <div className="stats shadow my-6">
         <div className="stat">
           <div className="stat-figure text-secondary">
@@ -179,6 +180,7 @@ const UserHome = () => {
           <div className="stat-value">{stats.bookingsCount}</div>
         </div>
       </div>
+      </div>
 
       <div className="max-w-4xl mx-auto">
         <div className="card bg-base-100 shadow-lg my-8 ">
@@ -189,11 +191,11 @@ const UserHome = () => {
                 <img
                   src={user?.photoURL}
                   alt="Profile"
-                  className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border-4 border-orange-400"
+                  className="w-20 h-20 md:w-28 md:h-28 rounded-full object-cover border-4 border-orange-400"
                 />
 
                 <div>
-                  <h2 className="font-bold text-2xl text-gray-500">
+                  <h2 className="font-bold text-xl md:text-2xl text-gray-500">
                     Edit Profile
                   </h2>
                   <p>Update your personal information and contact details.</p>
@@ -310,7 +312,7 @@ const UserHome = () => {
           </div>
         </div>
 
-        <div className="card border-2 border-red-500 bg-base-100">
+        <div className="card border-2 border-red-500 bg-base-100 mt-6">
           <div className="card-body">
             <h2 className="text-2xl text-red-600 font-bold">Danger Zone</h2>
 

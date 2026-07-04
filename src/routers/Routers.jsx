@@ -39,32 +39,32 @@ export const router = createBrowserRouter([
         {
             path: '/',
             element: <Home></Home>,
-            handle: { title: "Bistro Boss | Home" }            
+            handle: { title: "Bistro Restaurant | Home" }            
         },
         {
             path: 'menu',
             element: <Menu></Menu>,
-            handle: { title: "Bistro Boss | Menu" }
+            handle: { title: "Bistro Restaurant | Menu" }
         },
         {
             path: 'order/:category',
             element: <OrderShop></OrderShop>,
-            handle: { title: "Bistro Boss | Shop" }
+            handle: { title: "Bistro Restaurant | Shop" }
         },
         {
             path: 'contact',
             element: <Contact></Contact>,
-            handle: { title: "Bistro Boss | Contact" }
+            handle: { title: "Bistro Restaurant | Contact" }
         },
         {
             path: 'login',
             element: <Login></Login>,
-            handle: { title: "Bistro Boss | Login" }
+            handle: { title: "Bistro Restaurant | Login" }
         },
         {
             path: 'signup',
             element: <SignUp></SignUp>,
-            handle: { title: "Bistro Boss | SignUp" }
+            handle: { title: "Bistro Restaurant | SignUp" }
         },
 
     ]
@@ -72,44 +72,44 @@ export const router = createBrowserRouter([
   {
     path: 'dashboard',
     element: <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute> ,
-    handle: { title: "Bistro Boss | Dashboard" },
+    handle: { title: "Bistro Restaurant | Dashboard" },
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       // normal user routes
       {
         path: 'userHome',
         element:<UserHome></UserHome>,
-        handle: { title: "Bistro Boss | User Home" }
+        handle: { title: "Bistro Restaurant | User Home" }
       },
       {
         path: 'cart',
         element:<Cart></Cart>,
-        handle: { title: "Bistro Boss | Cart" }
+        handle: { title: "Bistro Restaurant | Cart" }
       },
       {
         path: 'payment',
         element:<Payment></Payment>,
-        handle: { title: "Bistro Boss | Payment" }
+        handle: { title: "Bistro Restaurant | Payment" }
       },
       {
           path: 'paymentHistory',
           element: <PaymentHistory></PaymentHistory>,
-          handle: { title: "Bistro Boss | Payment History" }
+          handle: { title: "Bistro Restaurant | Payment History" }
       },
       {
           path: 'review',
           element: <AddReview></AddReview>,
-          handle: { title: "Bistro Boss | Add Review" }
+          handle: { title: "Bistro Restaurant | Add Review" }
       },
       {
           path: 'reservations',
           element: <Reservation></Reservation>,
-          handle: { title: "Bistro Boss | Reservation" }
+          handle: { title: "Bistro Restaurant | Reservation" }
       },
       {
           path: 'bookings',
           element: <Bookings></Bookings>,
-          handle: { title: "Bistro Boss | Bookings" }
+          handle: { title: "Bistro Restaurant | Bookings" }
       },
 
 
@@ -117,34 +117,35 @@ export const router = createBrowserRouter([
       {
         path: 'adminHome',
         element:<AdminRoute> <AdminHome></AdminHome> </AdminRoute>,
-        handle: { title: "Bistro Boss | Admin Home" }
+        handle: { title: "Bistro Restaurant | Admin Home" }
       },
       {
         path: 'addItems',
         element:  <AdminRoute> <AddItems></AddItems> </AdminRoute>,
-        handle: { title: "Bistro Boss | Add Items" }
+        handle: { title: "Bistro Restaurant | Add Items" }
       },
       {
         path: 'manageItems',
         element:  <AdminRoute> <ManageItems></ManageItems> </AdminRoute>,
-        handle: { title: "Bistro Boss | Manage Items" }
+        handle: { title: "Bistro Restaurant | Manage Items" }
       },
       {
         path: 'manageBookings',
         element:  <AdminRoute> <ManageBookings></ManageBookings> </AdminRoute>,
-        handle: { title: "Bistro Boss | Manage Bookings" }
+        handle: { title: "Bistro Restaurant | Manage Bookings" }
       },
       {
         path: 'updateItems/:id',
         element:  <AdminRoute> <UpdateItems></UpdateItems> </AdminRoute>,
-        loader: async ({params}) => await fetch(`http://localhost:5000/menu/${params.id}`),
-        handle: { title: "Bistro Boss | Update Items" }
+        loader: async ({params}) => await fetch(`https://bistro-restaurant-server-phi.vercel.app/menu/${params.id}`),
+        handle: { title: "Bistro Restaurant | Update Items" }
       },
       {
         path: 'users',
         element:<AdminRoute><AllUsers></AllUsers></AdminRoute>,
-        handle: { title: "Bistro Boss | All Users" }
+        handle: { title: "Bistro Restaurant | All Users" }
       },
     ]
   }
 ]);
+

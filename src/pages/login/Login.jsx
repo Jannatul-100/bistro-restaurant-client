@@ -7,6 +7,7 @@ import { FaArrowRight, FaEye, FaEyeSlash, FaHome } from "react-icons/fa";
 import SocialLogin from '../../components/SocialLogin';
 import bgImage from '../../assets/others/authentication.png'
 import authImg from '../../assets/others/authentication2.png'
+import logo from '../../assets/Main-Logo.png';
 
 
 const Login = () => {
@@ -141,14 +142,17 @@ const Login = () => {
             backgroundImage: `url(${bgImage})`
         }}>
 
-            <Link to="/" className="flex items-center gap-1 hover:text-blue-700 text-sm md:text-md font-bold
+            <Link to="/" className="absolute top-4 left-6 md:top-8 md:left-10 lg:top-12 lg:left-40 z-50">
+               <img src={logo} alt='logo' className='w-16 h-16 md:w-20 md:h-20'></img>
+            </Link>
+            <Link to="/" className="flex items-center gap-1 hover:text-[#D1A054] text-sm md:text-md font-bold
             absolute top-4 right-6 md:top-8 md:right-10 lg:top-12 lg:right-40 z-50 btn btn-sm md:btn-md rounded-full">
                <FaHome /> Home 
             </Link>
 
-        <div className="hero-content flex-col lg:flex-row ">
+        <div className="hero-content flex-col lg:flex-row mt-6">
             <div className="text-center w-full lg:w-1/2  lg:text-left">
-                <h1 className="text-4xl md:text-5xl text-center font-bold text-blue-600">Login now!</h1>
+                <h1 className="text-4xl md:text-5xl text-center font-bold text-[#D1A054]">Login now!</h1>
                  <img src={authImg} className="py-4 md:py-6  px-6 md:px-0" />
             </div>
             <div className="card bg-base-100 w-full lg:w-1/2 max-w-sm shadow-2xl">
@@ -167,7 +171,7 @@ const Login = () => {
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(prev => !prev)}
-                                className="absolute inset-y-0 right-2 flex items-center z-10 text-gray-500 hover:text-black text-sm"
+                                className="absolute inset-y-0 right-3 flex items-center z-10 text-gray-500 hover:text-black text-sm"
                             >
                                 {showPassword ? <FaEyeSlash /> : <FaEye />}
                             </button>
@@ -179,7 +183,7 @@ const Login = () => {
 
                         <div><a onClick={handleForgotPassword} className="link link-hover hover:text-blue-700">Forgot password?</a></div>
                         
-                        <input  disabled={disabled}  className="btn btn-primary mt-2" type="submit" value="Login" />
+                        <input  disabled={disabled}  className="btn enabled:text-white enabled:bg-[#C28B3C] mt-2" type="submit" value="Login" />
                     </fieldset>
 
                     <p className='text-center text-[#D1A054] font-semibold pt-1'>New here? <Link to="/signup" className='hover:font-bold hover:underline'>Create a New Account.</Link> </p>

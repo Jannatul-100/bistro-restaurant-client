@@ -6,10 +6,11 @@ const useCart = () => {
 
     //tanstack query
     const axiosSecure = useAxiosSecure();
-    const { user } = useAuth();
+    const { user, loading } = useAuth();
 
     const {refetch,  data: cart = [] } = useQuery({
         queryKey: ['cart', user?.email],
+        enabled: !loading && !!user?.email,
         queryFn: async () =>{
             const res = await axiosSecure.get(`/carts?email=${user.email}`)
             return res.data

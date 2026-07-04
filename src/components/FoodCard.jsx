@@ -32,7 +32,7 @@ const FoodCard = ({item}) => {
                 category
 
             }
-            axiosSecure.post('http://localhost:5000/carts', cartItem)
+            axiosSecure.post('https://bistro-restaurant-server-phi.vercel.app/carts', cartItem)
             .then(res =>{
                 console.log(res.data);
                 if(res.data.insertedId){

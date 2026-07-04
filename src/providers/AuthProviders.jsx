@@ -58,9 +58,15 @@ const AuthProviders = ({children}) => {
                 .then(res =>{
                     if(res.data.token){
                         localStorage.setItem('access-token', res.data.token);
-                        setLoading(false);
+                        
                     }
                 })
+                .catch(err => {
+                    console.error('JWT fetch failed', err);
+                })
+                .finally(() => {
+                    setLoading(false); // always resolve loading, success or fail
+                });
             }
             else{
                 //remove token , if token stored in the client side: localStorage, caching, in memory

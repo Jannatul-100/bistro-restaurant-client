@@ -47,7 +47,7 @@ const Cart = () => {
             >
         </SectionTitle>
 
-      <div className="flex justify-between items-center mb-10 md:mb-12 font-bold">
+      <div className="flex justify-between items-center mb-6 md:mb-8 font-bold">
         <h2 className="text-xl md:text-2xl lg:text-3xl ">Total Orders: {cart.length}</h2>
         <h2 className="text-xl md:text-2xl lg:text-3xl ">Total Price: ${totalPrice}</h2>
         {

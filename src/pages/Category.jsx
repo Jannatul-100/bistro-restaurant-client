@@ -11,7 +11,7 @@ import slide4 from '../assets/home/slide4.jpg';
 import slide5 from '../assets/home/slide5.jpg';
 import chefService from '../assets/home/chef-service.jpg';
 import SectionTitle from '../components/SectionTitle';
-
+import logo from '../../src/assets/Main-Logo.png';
 
 
 const Category = () => {
@@ -63,15 +63,15 @@ const Category = () => {
 
                     }}
                     >
-                    <div className="bg-white shadow-xl p-12 md:p-16 max-w-sm md:max-w-2xl lg:max-w-4xl text-center">
-                        <h2 className="text-3xl font-serif mb-4 tracking-wider">
-                        Bistro Boss
-                        </h2>
+                    <div className="bg-white shadow-xl p-8 md:p-12 max-w-sm md:max-w-2xl lg:max-w-4xl text-center">
+                        <div className='flex items-center justify-center'>
+                            <img className='w-16 h-16 md:w-18 md:h-18 lg:w-20 lg:h-20' src={logo} alt="logo" />
+                            <h2 className=" text-2xl md:text-3xl font-serifs font-semibold text-[#C28B3C] tracking-wider">
+                            Bistro Restaurant
+                            </h2>
+                        </div>
                         <p className="text-gray-600 leading-relaxed">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Necessitatibus, libero accusamus laborum deserunt ratione 
-                        dolor officiis praesentium! Deserunt magni aperiam dolor 
-                        eius dolore at, nihil iusto ducimus incidunt quibusdam nemo.
+                         Welcome to our little corner of comfort! Discover the magic of bistro dining. Bistro Restaurant combines refined taste with a laid-back atmosphere. We focus on high-quality, fresh ingredients to bring you classic dishes you will love. Relax, sip, and savor the moment.
                         </p>
                     </div>
                 </div>

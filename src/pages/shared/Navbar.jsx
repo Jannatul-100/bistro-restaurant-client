@@ -6,7 +6,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from '../../hooks/useCart';
 import useAdmin from '../../hooks/useAdmin';
-
+import logo from '../../../src/assets/Main-Logo.png';
 
 const Navbar = () => {
 
@@ -24,16 +24,16 @@ const Navbar = () => {
 
     const links = 
     <>
-        <li><Link to="/">HOME</Link></li>
-        <li><Link to="contact">CONTACT US</Link></li>
+        <li><NavLink to="/" className={({ isActive }) => isActive ? "text-[#B67A2D] font-semibold" : "hover:text-[#C28B3C]"}>HOME</NavLink></li>
+        <li><NavLink to="contact" className={({ isActive }) => isActive ? "text-[#B67A2D] font-semibold" : "hover:text-[#C28B3C]"}>CONTACT US</NavLink></li>
 
         {user && (
             <li><NavLink to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"} 
-            className={({ isActive }) => isActive ? " text-white " : ""}>DASHBOARD</NavLink></li>
+            className={({ isActive }) => isActive ? "text-[#B67A2D] font-semibold" : "hover:text-[#C28B3C]"}>DASHBOARD</NavLink></li>
         )}
 
-        <li><Link to="/menu">OUR MENU</Link></li>
-        <li><Link to="/order/salad" >OUR SHOP</Link></li>
+        <li><NavLink to="/menu" className={({ isActive }) => isActive ? "text-[#B67A2D] font-semibold" : "hover:text-[#C28B3C]"}>OUR MENU</NavLink></li>
+        <li><NavLink to="/order/salad" className={({ isActive }) => isActive ? "text-[#B67A2D] font-semibold" : "hover:text-[#C28B3C]"}>OUR SHOP</NavLink></li>
         
         {!isAdmin && ( 
             <li>
@@ -55,7 +55,7 @@ const Navbar = () => {
             {
                 user ? 
                 <div className="flex items-center gap-2">
-                    <button onClick={handleLogout} className='btn rounded-full btn-sm md:btn-md'>LOGOUT</button>
+                    <button onClick={handleLogout} className='btn rounded-full btn-sm md:btn-md bg-[#C28B3C] text-white border-0'>LOGOUT</button>
                     
                     <div className="flex items-center gap-1">
                         <FaUserCircle className='w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6'/>
@@ -63,13 +63,13 @@ const Navbar = () => {
                     </div>
                 </div> 
                 : 
-                <Link to="/login" className="btn btn-sm md:btn-md bg-gray-400 text-white border-0 rounded-full">LOGIN</Link>
+                <Link to="/login" className="btn btn-md md:btn-lg bg-[#C28B3C] text-white border-0 rounded-full">LOGIN</Link>
             }
        
     </>
 
     return (
-        <div className="navbar fixed z-10 text-white bg-black/30 max-w-screen-xl p-3 w-full left-0 right-0  mx-auto">
+        <div className="navbar fixed z-10 text-white bg-black/30 max-w-screen-xl px-2 md:px-4 w-full left-0 right-0 mx-auto">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -82,7 +82,17 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div>
-                    <Link to="/" className="btn-xs btn-ghost text-lg md:text-2xl ml-0 md:ml-2 lg:ml-4 font-semibold ">Bistro Boss Restaurant</Link>
+                    <Link to="/" className='flex items-center '>
+                        <img src={logo} alt='logo' className='w-16 h-16 md:w-20 md:h-20'></img> 
+                         <div className="hidden md:block">
+                        <h1 className="text-3xl font-bold tracking-wide text-[#B67A2D]">
+                        Bistro
+                        </h1>
+                        <p className="text-sm uppercase tracking-[0.3em] text-gray-500">
+                        Restaurant
+                        </p>
+                        </div>
+                    </Link>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex ">

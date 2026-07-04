@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import featuredImg from '../assets/home/featured.jpg';
 import SectionTitle from '../components/SectionTitle';
 
@@ -36,8 +37,8 @@ const Featured = () => {
                     <div>
                         <h2>{formattedDate}</h2>
                         <h2>WHERE CAN I GET SOME?</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error voluptate facere, deserunt dolores maiores quod nobis quas quasi. Eaque repellat recusandae ad laudantium tempore consequatur consequuntur omnis ullam maxime tenetur.</p>
-                        <button className='btn btn-outline border-0 border-b-4 mt-2'>Read More</button>
+                        <p>Explore our menu featuring delicious starters, handcrafted mains, fresh salads, gourmet burgers, and irresistible desserts. Every dish is prepared with care to ensure a memorable dining experience.</p>
+                        <Link to="/menu"><button className='btn btn-outline border-0 border-b-4 mt-2'>Learn More</button></Link>
                     </div>
                 </div>
             </div>

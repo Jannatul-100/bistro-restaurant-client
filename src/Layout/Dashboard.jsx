@@ -7,7 +7,7 @@ import { Link, NavLink, Outlet, useMatches } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
 import { FaUserCircle, FaSignOutAlt } from "react-icons/fa";
-
+import logo from '../../src/assets/Main-Logo.png';
 
 const Dashboard = () => {
 
@@ -37,23 +37,33 @@ const Dashboard = () => {
         <div className="flex">
             {/* side bar */}
             <div className="w-40 md:w-52 lg:w-64 min-h-screen bg-orange-300">
-                <div className="p-6 md:p-8 lg:p-10">
-                    <Link to="/">
-                        <p className="text-md md:text-xl font-bold">BISTRO BOSS</p>
-                         <p className="text-sm font-bold">RESTAURANT</p>
+                <div className="pt-8 pb-4 px-0 md:px-2 lg:px-4 ">
+                
+                    <Link to="/" className='flex items-center '>
+                        <img src={logo} alt='logo' className='w-16 h-16 md:w-20 md:h-20'></img> 
+                         <div>
+                        <h1 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wide text-[#A86A1F] ">
+                        Bistro
+                        </h1>
+                        <p className="text-xs uppercase tracking-[0.2em] text-gray-500">
+                        Restaurant
+                        </p>
+                        </div>
                     </Link>
+                
                 </div>
 
                 <div className="p-2 md:p-4 lg:p-6">
                     <div className="flex items-center gap-3">
 
                         {/* Profile Image */}
+                        
                         {
                             user?.photoURL ? (
                                 <img
                                     src={user.photoURL}
                                     alt="Profile"
-                                    className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-white"
+                                    className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-[#C28B3C]"
                                 />
                             ) : (
                                 <FaUserCircle className="w-10 h-10 md:w-12 md:h-12 text-white" />
@@ -62,7 +72,7 @@ const Dashboard = () => {
 
                         {/* Name & Email */}
                         <div>
-                            <h2 className="font-bold text-sm md:text-base">
+                            <h2 className="font-semibold text-sm md:text-base">
                                 {user?.displayName || "User"}
 
                                 <span

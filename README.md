@@ -1,16 +1,84 @@
-# React + Vite
+# 🍽️ Bistro Restaurant
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📖 Description
 
-Currently, two official plugins are available:
+**Bistro Restaurant** is a modern full-stack restaurant management web application built using the MERN stack. The platform provides customers with a seamless online dining experience, allowing them to browse menus, reserve tables, place food orders, and make secure online payments. It also features a comprehensive admin dashboard for managing users, menu items, reservations, and restaurant analytics.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The application emphasizes responsive design, secure authentication, role-based access control, and an intuitive user interface to deliver a professional restaurant management solution. Customers can easily manage their profiles, view payment history, and track reservations, while administrators have powerful tools to oversee restaurant operations efficiently.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🌐 Live Demo
 
-## Expanding the ESLint configuration
+🚀 **Bistro Live Website:** https://bistro-boss-5fe12.web.app/
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ Features
+
+### 👤 Customer Features
+
+- Secure Email & Password Authentication
+- Google Sign-In Authentication
+- JWT-Based Protected Routes
+- Browse Food Menu by Categories
+- Food Ordering System
+- Shopping Cart Management
+- Secure Stripe Payment Integration
+- Online Table Reservation
+- User Dashboard
+- Payment History
+- Profile Management
+- Fully Responsive Design (Mobile, Tablet & Desktop)
+
+### 👨‍💼 Admin Features
+
+- Role-Based Admin Dashboard
+- User Management
+- Promote Users to Admin
+- Add, Update & Delete Menu Items
+- Reservation Management
+- Customer Details Overview
+- Restaurant Analytics Dashboard
+- Revenue Statistics
+- Order Statistics
+- Secure Protected APIs
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- React.js
+- React Router DOM
+- Tailwind CSS
+- DaisyUI
+- Axios
+- TanStack Query (React Query)
+- React Hook Form
+- SweetAlert2
+- React Icons
+- Swiper.js
+- Recharts
+
+### Backend
+
+- Node.js
+- Express.js
+- MongoDB Atlas
+- JSON Web Token (JWT)
+- Stripe Payment API
+- CORS
+- Dotenv
+
+### Authentication
+
+- Firebase Authentication
+- Google Authentication
+- JWT Authorization
+
+### Deployment
+
+- Firebase Hosting (Frontend)
+- Vercel (Backend)
